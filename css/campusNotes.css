@@ -1,0 +1,31 @@
+﻿html,body {
+	background-color: #eeeeee;
+}
+.mui-off-canvas-right {
+	width: 100%;
+	background: #f6f6f6;
+}
+.mui-bar {
+    
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #d1d1d1;
+    
+}
+.mui-table-view {
+    
+    background-color: #eeeeee;
+}
+.mui-bar-tab{
+	background-color: #f9f9f9;
+	border-top: 1px solid #d1d1d1;
+}
+.mui-bar-tab .mui-tab-item.mui-active {
+    color: #000000;
+}
+.mui-bar-tab .mui-tab-item {
+    
+    color: #a3a3a3;
+}
+.self-mui-action-back{
+	color: #000000;
+}

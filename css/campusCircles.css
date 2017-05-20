@@ -1,0 +1,20 @@
+﻿html,body {
+    background-color: #eeeeee;
+}
+.mui-content a {
+	color: #8F8F94;
+}
+
+.mui-content a.active {
+	color: #007aff;
+}
+
+.mui-icons-self {
+	color: #000000;
+	font-size: 14px;
+	float: right;
+}
+.mui-table-view {
+    
+    background-color: #eeeeee;
+}
