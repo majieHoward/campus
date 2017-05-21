@@ -37,7 +37,7 @@ var createFragment = function(count) {
         li.className = 'mui-card';
         li.innerHTML =''
         +'<div class="mui-card-header mui-card-media">'
-        +'<img src="images/logo.png" />'
+        +'<img src="http://wx.qlogo.cn/mmopen/RKeLNKp2313cLN64s6wykw53icHyZE0rnp3oJewticgVMCKGwlhvelYXHY2kibfAOmyj7aBMEKxnuiaX0NOK7TKibicWFFcKohPrfQ/0" />'
         +'<div class="mui-media-body">'
         +'overcast'
         +'<span class="mui-icons-self icon-self-weizhi">成都市</span>'
@@ -45,7 +45,7 @@ var createFragment = function(count) {
         +'</div>'
         +'</div>'
         +'<div class="mui-card-content" >'
-        +'<img width="100%" data-lazyload="http://127.0.0.1:8080/mui/examples/hello-mui/images/' + (i % 5 + 1) + '.jpg?version=' + Math.random() * 1000 + '">'
+        +'<img width="100%" data-lazyload="http://127.0.0.1:8080/images/' + (i % 5 + 1) + '.jpg?version=' + Math.random() * 1000 + '">'
         +'<div class="mui-card-content-inner">'
         +'<p style="color: #333;">'
         +'<a href="buttons.html">这里显示文章摘要，让读者对文章内容有个粗略的概念...'
@@ -64,7 +64,7 @@ var createFragment = function(count) {
 };
 
 mui("#list").on('tap', 'a', function (event) {
-    window.parent.openDetailPager("/mui/examples/hello-mui/examples/detailPage.html");
+    window.parent.openDetailPager("/detailPage.html");
 });
 /**回到顶部**/
 //mui('.mui-scroll-wrapper').pullRefresh().refresh(true);
