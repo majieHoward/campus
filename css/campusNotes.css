@@ -29,3 +29,7 @@
 .self-mui-action-back{
 	color: #000000;
 }
+
+.mui-bar .mui-icon:active {
+    opacity: 1;
+}

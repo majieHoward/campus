@@ -3,7 +3,7 @@ var flashNote={};
 var str = "";  
 
 
-(function(flashNote) {
+(function(flashNote,window) {
 	mui.init();
 
 	mui('.mui-scroll-wrapper').scroll({
@@ -46,7 +46,7 @@ var str = "";
 				/**opacity 从 0.0 （完全透明）到 1.0（完全不透明）**/
 				element.menuBackdrop.style.opacity = 0;
 				document.getElementById("textareaOfDescribe").focus();
-				controlDescribeElement("tabIframeMainHeader","block","contact",45,0);
+				controlDescribeElement("tabIframeMainHeader","block","flashShot",45,0);
 				element.menuWrapper.classList.add('hidden');
 			}, 1);
 		} else {
@@ -57,7 +57,7 @@ var str = "";
 			/**opacity 从 0.0 （完全透明）到 1.0（完全不透明）**/
 			element.menuBackdrop.style.opacity = 0.5;
 			
-			controlDescribeElement("tabIframeMainHeader","none","contact",0,45);
+			controlDescribeElement("tabIframeMainHeader","none","flashShot",0,45);
 	 		document.getElementById("textareaOfDescribe").blur();
 		}
 		setTimeout(function() {
@@ -126,16 +126,17 @@ var str = "";
 
 	var publishItemMessage=function(){
 		/**可以只发图片或者只发文字**/
-		var container = mui("#publishMessageBar");
+		//var container = mui("#publishMessageBar");
 		//因为本页面既有顶部准确进度的进度条，也有顶部无限循环的进度条，因此这里需要强制定义progress: undefined覆盖；
 					//一般使用时，mui(container).progress()构造方法中不传入参数，就表示无限循环；
-		container.progressbar({
+		/*container.progressbar({
 			progress: undefined
-		}).show();
+		}).show();*/
 		//超时后隐藏
-		setTimeout(function() {
+		/*setTimeout(function() {
 			mui('#publishMessageBar').progressbar().hide();
-		}, 5000);
+		}, 5000);*/
+		window.parent.releaseANewCampusCircles(element.textareaOfDescribe.value);
 	}
 
 	flashNote.swithToShowImage=function(imgSource){

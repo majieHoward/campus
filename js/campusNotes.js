@@ -59,8 +59,25 @@ var openDetailPager_style = {
 	//important
 	bottom: '0px'
 };
+/**点赞和评论页面**/
+var senseOfParticipationPage=[
+	"giveTheThumbsUp.html",
+	"commentary.html"
+];
+var senseOfParticipations=[
+	"giveTheThumbsUp",
+	"commentary"
+];
+var senseOfParticipationsIFrameIds=[
+	"giveTheThumbsUpIFrame",
+	"commentaryIFrame"
+];
+var senseOfParticipations_style={
+	top: '0px',
+	//important
+	bottom: '0px'
+};
 
-var aniShow = {};
 // 当前激活选项
 var activeTab;
 var activeTabTitle;
@@ -69,12 +86,6 @@ var afteractiveTabTitle;
 var title = document.getElementById("title");
 var subpage;
 var subpagescontent;
-/**初始化展示页面**/
-var initDisplayPage=function(){
-	activeTab="campusCircles";
-	activeTabTitle="校yuan记";
-	activationPager("campusCircles","校yuan记");
-}
 
 for(var i=0;i<subpages.length;i++){
 	subpage=subpages[i];
@@ -128,15 +139,28 @@ var activationPager=function(container,titleValue){
 	document.getElementById(container).style.display="block";
 
 }
+
+
+for(var i=0;i<senseOfParticipationPage.length;i++){
+	subpage=senseOfParticipationPage[i];
+	subpagescontent=senseOfParticipations[i];
+	//console.log(subpage+"      "+subpagescontent);
+	// 创建iframe代替子页面
+	createIframe(subpagescontent,{
+	    url: subpage,
+	    style: senseOfParticipations_style,
+	    id : senseOfParticipationsIFrameIds[i]
+	});
+}
+
+/**初始化展示页面**/
+var initDisplayPage=function(){
+	activeTab="campusCircles";
+	activeTabTitle="校yuan记";
+	activationPager("campusCircles","校yuan记");
+}
+
 initDisplayPage();
-// 底部菜单切换现实事件处理
-mui('.mui-bar-tab').on('tap', 'a', function(e) {
-	var container=this.getAttribute('container');
-	if (container == activeTab) {return;}
-	//显示目标选项卡
-	activationPager(container,this.querySelector('.mui-tab-label').getAttribute("selfHeaderShowValue"));
-	
-});
 // 监听tap事件，解决 a标签 不能跳转页面问题
 /**add by mayijie for 侧滑出详情内容页面**/
 //侧滑容器父节点body元素下的第一个节点
@@ -200,16 +224,6 @@ var settingMenuItemActive=function(afteractiveTab){
 	document.getElementById(afteractiveTab+"MenuItem").classList.add('mui-active');
 }
 
-/**回退按钮**/
-showSelfMuiActionBackElement.addEventListener('tap',function(){
-	controlDisplayHeaderAndNav("tabIframeMainNav","block");
-	settingMenuItemActive(afteractiveTab);
-	activationPager(afteractiveTab,afteractiveTabTitle);
-	showSelfMuiActionBack("none");
-	
-});
-
-
 /**photoControl**/
 var switchToFeedback=function(imgSource){
 	var all=document.getElementsByClassName("child-content-self");
@@ -235,4 +249,41 @@ var photocontrolPager=function(imgSource){
 	controlDisplayHeaderAndNav("tabIframeMainNav","none");
 	document.getElementById("photocontrol").style.display="block"; 
 }
+// 底部菜单切换现实事件处理
+mui('.mui-bar-tab').on('tap', 'a', function(e) {
+	var container=this.getAttribute('container');
+	if (container == activeTab) {return;}
+	//显示目标选项卡
+	activationPager(container,this.querySelector('.mui-tab-label').getAttribute("selfHeaderShowValue"));
+	
+});
+/**回退按钮**/
+showSelfMuiActionBackElement.addEventListener('tap',function(){
+	controlDisplayHeaderAndNav("tabIframeMainNav","block");
+	settingMenuItemActive(afteractiveTab);
+	activationPager(afteractiveTab,afteractiveTabTitle);
+	showSelfMuiActionBack("none");
+});
+/**控制展现点赞和评论列表**/
 
+var controlSenseOfParticipationShow=function(iframeId){
+	controlDisplayHeaderAndNav("tabIframeMainNav","none");
+	controlDisplayHeaderAndNav("tabIframeMainHeader","none");
+	activationPager(iframeId,"");
+}
+
+var controlSenseOfParticipationHide=function(){
+	controlDisplayHeaderAndNav("tabIframeMainNav","block");
+	controlDisplayHeaderAndNav("tabIframeMainHeader","block");
+	settingMenuItemActive(afteractiveTab);
+	activationPager(afteractiveTab,afteractiveTabTitle);
+}
+
+/****/
+var releaseANewCampusCircles=function(campusCirclesObject){
+	document.getElementById("campusCirclesIFrame").contentWindow.releaseCampusCircleShot(campusCirclesObject);
+    controlDisplayHeaderAndNav("tabIframeMainNav","block");
+	controlDisplayHeaderAndNav("tabIframeMainHeader","block");
+    activationPager("campusCircles","校yuan记");
+    settingMenuItemActive("campusCircles");
+}

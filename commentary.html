@@ -1,1 +1,44 @@
-﻿
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>评论</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/commentary.css" />
+		<link rel="stylesheet" type="text/css" href="css/icons-feedback-self.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a id="commentaryBackParentPage" name="commentaryBackParentPage" class="mui-icon mui-icon-left-nav self-mui-action-back mui-pull-left"></a>
+			<h1 class="mui-title">评论</h1>
+		</header>
+
+			<div id="pullrefresh" class="self-commentary-list mui-content mui-scroll-wrapper">
+			    <div class="mui-scroll" id="listcommentary" name="listcommentary">
+					<ul id="list" class="mui-table-view ">
+
+					</ul>
+				</div>
+			</div>
+		<footer>
+			<div class="footer-center">
+				<textarea id="commentaryText" name="commentaryText" type="text" class="input-text"></textarea>
+			</div>
+			<label for="" class="footer-right">
+				<i id="sendCommentary" name="sendCommentary" class="mui-icons-feedback-self icon-feedback-fasong" ></i>
+			</label>
+		</footer>
+	</body>
+	<script type="text/javascript" src="js/howard.error.control.js"></script>
+	<script src="js/mui.min.js "></script>
+	<script src="js/mui.lazyload.js"></script>
+	<script src="js/mui.lazyload.img.js"></script>
+	<script src="js/commentary.js"></script>
+</html>

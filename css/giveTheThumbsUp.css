@@ -1,0 +1,24 @@
+p {
+	text-indent: 22px;
+}
+.des {
+	margin: .5em 0;
+}
+.des>li {
+	font-size: 14px;
+	color: #8f8f94;
+}
+img {
+    border: 0;
+    border-radius: 50%;
+}
+.self-mui-action-back {
+    color: #000000;
+}
+.mui-bar-tab .mui-tab-item.mui-active {
+    color: #000000;
+}
+
+.mui-bar .mui-icon:active {
+    opacity: 1;
+}

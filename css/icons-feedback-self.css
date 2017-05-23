@@ -26,3 +26,23 @@
 .icon-feedback-o5:before {
     content: "\e60a";
 }
+
+.icon-feedback-send:before { 
+    content: "\e634"; 
+}
+
+.icon-feedback-fasong:before { 
+    content: "\e78b"; 
+}
+
+.icon-feedback-duihuakuang:before { 
+    content: "\e663"; 
+}
+
+.icon-feedback-aixin:before { 
+    content: "\e602"; 
+}
+
+.icon-feedback-aixin1:before { 
+    content: "\e606"; 
+}
