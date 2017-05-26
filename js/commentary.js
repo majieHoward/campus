@@ -5,9 +5,66 @@ var str = "";
 (function(commentary,window) {
 	var element={};
     window.selfErgodicElement(document.body,element);
+    /**
+	Function.prorotype.new = function() {
+	  //以prototype属性值作为原型对象来克隆出一个新对象
+	  var that = Object.create(this.prorotype);
+	   
+	  //改变函数中this关键指向这个新克隆的对象
+	  var other = this.apply(that, arguments);
+	   
+	  //如果返回值不是一个对象，则返回这个新克隆对象
+	  return (other && typeof other === 'object') ? other : that;
+	}
+    **/
+    var commentaryCellElement=function(commentaryObject){
+    	this.commentaryObject=commentaryObject;
+    }
+
+    commentaryCellElement.prototype.muiMediaObject=function(){
+    	var img = document.createElement('img');
+        img.className="mui-media-object"
+        img.setAttribute("data-lazyload","http://wx.qlogo.cn/mmopen/RKeLNKp2313cLN64s6wykw53icHyZE0rnp3oJewticgVMCKGwlhvelYXHY2kibfAOmyj7aBMEKxnuiaX0NOK7TKibicWFFcKohPrfQ/0");
+    	return img;
+    }
+
+    commentaryCellElement.prototype.selfPullLeft=function(){
+    	var div = document.createElement('div');
+		div.className = 'self-pull-left';
+		div.appendChild(this.muiMediaObject());
+		return div;
+    }
+
+    commentaryCellElement.prototype.selfCommentaryReviewer=function(){
+    	var span = document.createElement('span');
+    	span.className="self-commentary-reviewer";
+    	span.appendChild("overcast");
+    }
+
+ 	commentaryCellElement.prototype.selfCommentaryCommentTime=function(){
+ 		var span = document.createElement('span');
+ 		span.className="self-commentary-comment-time";
+ 		span.appendChild("16小时前");
+    }
+
+    commentaryCellElement.prototype.selfCommentaryEllipsis=function(){
+    	var p = document.createElement('p');
+    	p.className="self-commentary-ellipsis";
+    	p.appendChild(this.commentaryObject);
+    }
+
+    commentaryCellElement.prototype.muiMediaBody=function(){
+    	var div = document.createElement('div');
+		div.className = 'mui-media-body';
+		div.appendChild(this.selfCommentaryReviewer());
+		div.appendChild(this.selfCommentaryCommentTime());
+		div.appendChild(this.selfCommentaryEllipsis());
+    }
+
     /**构造<li class="mui-table-view-cell mui-media">中的内容**/
     var structureCellString=function(commentaryObject){
- 		var commentaryString='<div class="self-pull-left">'
+ 		var commentaryString=''
+ 		    +'<div class="self-pull-left">'
 			+'<img class="mui-media-object"'
 			+'data-lazyload="http://wx.qlogo.cn/mmopen/RKeLNKp2313cLN64s6wykw53icHyZE0rnp3oJewticgVMCKGwlhvelYXHY2kibfAOmyj7aBMEKxnuiaX0NOK7TKibicWFFcKohPrfQ/0">'
 			+'</div>'
@@ -17,11 +74,12 @@ var str = "";
 			+'</span>'
 			+'<span class="self-commentary-comment-time">'
 			+'16小时前'
-			+"</span>"
+			+'</span>'
 			/**ellipsis省略**/
 			+'<p class="self-commentary-ellipsis">'
 			+ commentaryObject
-			+'</p></div>';
+			+'</p>'
+			+'</div>';
 		return commentaryString;
     };
     /****/
@@ -35,6 +93,7 @@ var str = "";
 	var createFragment = function(count) {
 		var fragment = document.createDocumentFragment();
 		for (var i = 0; i < count; i++) {
+			//appendChild() 方法向节点添加最后一个子节点
 			fragment.appendChild(structureLiElementString(i+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"));
 		}
 		return fragment;

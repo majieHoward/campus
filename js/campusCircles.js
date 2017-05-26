@@ -109,17 +109,38 @@ var structureCardElementString=function(campusCircleObject){
         +'</div>' 
         +'</div>' 
         +'<div class="mui-self-partake-footer">'
-        +'<p>'
+
         +'<div class="mui-icons-feedback-self mui-icons-partake-self icon-feedback-aixin1 campusCircle-giveTheThumbsUp-list">'
         +'<span class="campusCircle-total-number-praise">'
         +19
         +'</span>个赞'
         +'</div>'
-        +'</p>'
-        +'<p>'
-        +'<div class="mui-icons-feedback-self mui-icons-partake-self icon-feedback-comment campusCircle-commentary-list">'
+        +'<div class="mui-circles-view-cell mui-media">'
+        +'<div class="self-pull-left">'
+        +'<span class="mui-icons-feedback-self mui-icons-partake-self icon-feedback-comment campusCircle-commentary-list">'
+        +'</span>'
         +'</div>'
+        +'<div class="mui-media-body">'
+        +'<p class="self-commentary-ellipsis">'
+        +'<span class="ellipsis-commentator">'
+        +'马一杰:'
+        +'</span>'
+        +'探索频道主编你好,小生不才这厢有礼了'
         +'</p>'
+        /**查看所有**/
+         +'<p class="view-all-commentator-ellipsis">'
+        +'<span class="view-all-commentator">'
+        +'查看所有10条评论'
+        +'</span>'
+        +'</p>'
+        +'<p class="self-commentary-ellipsis">'
+        +'<span class="ellipsis-commentator">'
+        +'马一杰:'
+        +'</span>'
+        +'你拍风景总是大气又细致,看完你拍的景我把昨天拍的桥都是删了,这就是美的力量'
+        +'</p>'
+        +'</div>'
+        +'</div>'
         +'</div>';
     return campusCircleString;
 }
@@ -150,6 +171,15 @@ mui("#list").on('tap', 'div', function (event) {
     }
 });
 
+mui("#list").on('tap','p',function(event){
+   var pClassList=this.classList;
+   /**点击展示所有的评论**/
+   if(pClassList.contains('view-all-commentator-ellipsis')){
+         /**展示当前校园圈所有的评论列表**/
+        window.parent.controlSenseOfParticipationShow("commentary");
+   }
+   
+});
 
 mui("#list").on('tap', 'a', function (event) {
 
@@ -167,6 +197,7 @@ mui("#list").on('tap', 'a', function (event) {
             totalPraiseValue=parseInt(totalPraiseElement.innerHTML,10);
         }
     }
+    var campusCircleClassList=this.classList;
     /****/
     if (campusCircleClassList.contains('campusCircle-commentary')){
         /**评论**/
@@ -223,7 +254,8 @@ var releaseCampusCircleShot=function(campusCircleObject){
     var campusCircleElement=structureLiElementString(campusCircleObject);
     //node.insertBefore(newnode,existingnode)
     //newnode     Node 对象     必需。需要插入的节点对象。
-    //existingnode    Node object     可选。在其之前插入新节点的子节点。如果未规定，则 insertBefore 方法会在结尾插入 newnode。
+    //existingnode    Node object     可选。
+    //在其之前插入新节点的子节点。如果未规定，则 insertBefore 方法会在结尾插入 newnode。
     list.insertBefore(campusCircleElement, list.firstElementChild);
     lazyLoadApi.refresh(true);
     scroll.scrollTo(0,0,100);
