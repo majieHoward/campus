@@ -1,4 +1,11 @@
-﻿/**
+﻿/*!
+ * ======================================================
+ * photoControl (https://github.com/majieHoward)
+ * =======================================================
+ * @version:1.0.0
+ * @author:120234740@qq.com
+ */
+/**
 Function.prorotype.new = function() {
   //以prototype属性值作为原型对象来克隆出一个新对象
   var that = Object.create(this.prorotype);

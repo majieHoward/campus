@@ -1,3 +1,10 @@
+/*!
+ * ======================================================
+ * photoControl (https://github.com/majieHoward)
+ * =======================================================
+ * @version:1.0.0
+ * @author:120234740@qq.com
+ */
 (function(control) {
 	/**全局错误提示**/
 	control.onerror = function (errMsg, scriptURI, lineNumber, columnNumber, errorObj) {

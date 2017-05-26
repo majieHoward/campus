@@ -1,4 +1,11 @@
-﻿var obtainParentThroughClassName = function(el, parentSelector,classValue){
+﻿/*!
+ * ======================================================
+ * photoControl (https://github.com/majieHoward)
+ * =======================================================
+ * @version:1.0.0
+ * @author:120234740@qq.com
+ */
+var obtainParentThroughClassName = function(el, parentSelector,classValue){
     // If no parentSelector defined will bubble up all the way to *document*
     if (parentSelector === undefined) {
         parentSelector = document;

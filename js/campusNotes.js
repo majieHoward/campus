@@ -1,4 +1,11 @@
-﻿/*浏览器的兼容处理方法*/
+﻿/*!
+ * ======================================================
+ * photoControl (https://github.com/majieHoward)
+ * =======================================================
+ * @version:1.0.0
+ * @author:120234740@qq.com
+ */
+/*浏览器的兼容处理方法*/
 /**在DIV中创建iframe**/
 var createIframe = function (el, opt) {
 	var elContainer = document.querySelector('.'+el);
