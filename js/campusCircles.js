@@ -74,122 +74,13 @@ mui.init({
     }
 });
 
-var campusCircleCellElement=function(campusCircleObject){
-    this.campusCircleObject=campusCircleObject;
-}
-
-campusCircleCellElement.prototype.headImg=function(){
-    var img = document.createElement('img');
-    img.className="mui-media-object"
-    img.setAttribute("data-lazyload","http://wx.qlogo.cn/mmopen/RKeLNKp2313cLN64s6wykw53icHyZE0rnp3oJewticgVMCKGwlhvelYXHY2kibfAOmyj7aBMEKxnuiaX0NOK7TKibicWFFcKohPrfQ/0");
-    return img;
-}
-
-campusCircleCellElement.prototype.detailOfArea=function(){
-    var p = document.createElement('p');
-    p.appendChild(document.createTextNode("22 小时前(10:35) · 晴 4 &#8451; · 15千米"));
-    return p;
-}
-
-campusCircleCellElement.prototype.iconSelfWeizhi=function(){
-    var span = document.createElement('span');
-    span.className = "mui-icons-self icon-self-weizhi";
-    span.appendChild(document.createTextNode("成都市"));
-    return span;
-}
-
-campusCircleCellElement.prototype.muiMediaBody=function(){
-    var div = document.createElement('div');
-    div.className = "mui-media-body";
-    div.appendChild(document.createTextNode("overcast"));
-    div.appendChild(this.iconSelfWeizhi());
-    return div;
-}
-
-campusCircleCellElement.prototype.muiCardHeader=function(){
-    var div = document.createElement('div');
-    div.className = "mui-card-header mui-card-media";
-    div.appendChild(this.headImg());
-    return div;
-}
-
 var structureCardElementString=function(campusCircleObject){
-    var campusCircleString=''
-        +'<div class="mui-card-header mui-card-media">'
-        /**发布校园用户头像start**/
-        +'<img data-lazyload="http://wx.qlogo.cn/mmopen/RKeLNKp2313cLN64s6wykw53icHyZE0rnp3oJewticgVMCKGwlhvelYXHY2kibfAOmyj7aBMEKxnuiaX0NOK7TKibicWFFcKohPrfQ/0" />'
-         /**发布校园用户头像end**/
-        +'<div class="mui-media-body">'
-        +'overcast'
-        +'<span class="mui-icons-self icon-self-weizhi">'
-        /**地点**/
-        +'成都市'
-        +'</span>'
-        +'<p>'
-        +'22 小时前(10:35) · 晴 4 &#8451; · 15千米'
-        +'</p>' 
-        +'</div>'
-        +'</div>'
-        +'<div class="mui-card-content" >'
-        +'<img width="100%" data-lazyload="http://127.0.0.1:8080/images/1.jpg">'
-        +'<div class="mui-card-content-inner mui-self-card-content-inner">'
-        /**校园圈内容 start**/
-        +'<p style="color: #000000;">'
-        +campusCircleObject
-        +'</p>'
-        /**校园圈内容 end**/
-        /**参与点赞评论 start**/
-        +'<p class="mui-self-card-footer">'
-        /**点赞**/
-        +'<a class="campusCircle-praise"><span class="mui-icons-feedback-self icon-feedback-aixin"></span></a>'
-        /**评论**/
-        +'<a class="campusCircle-commentary"><span class="mui-icons-feedback-self icon-feedback-pinglun"></span></a>' 
-        +'</p>' 
-        /**参与点赞评论 end**/
-        +'</div>' 
-        +'</div>' 
-        +'<div class="mui-self-partake-footer">'
-
-        +'<div class="mui-icons-feedback-self mui-icons-partake-self icon-feedback-aixin1 campusCircle-giveTheThumbsUp-list">'
-        +'<span class="campusCircle-total-number-praise">'
-        +19
-        +'</span>个赞'
-        +'</div>'
-        +'<div class="mui-circles-view-cell mui-media">'
-        +'<div class="self-pull-left">'
-        +'<span class="mui-icons-feedback-self mui-icons-partake-self icon-feedback-comment campusCircle-commentary-list">'
-        +'</span>'
-        +'</div>'
-        +'<div class="mui-media-body">'
-        +'<p class="self-commentary-ellipsis">'
-        +'<span class="ellipsis-commentator">'
-        +'马一杰:'
-        +'</span>'
-        +'探索频道主编你好,小生不才这厢有礼了'
-        +'</p>'
-        /**查看所有**/
-         +'<p class="view-all-commentator-ellipsis">'
-        +'<span class="view-all-commentator">'
-        +'查看所有10条评论'
-        +'</span>'
-        +'</p>'
-        +'<p class="self-commentary-ellipsis">'
-        +'<span class="ellipsis-commentator">'
-        +'马一杰:'
-        +'</span>'
-        +'你拍风景总是大气又细致,看完你拍的景我把昨天拍的桥都是删了,这就是美的力量'
-        +'</p>'
-        +'</div>'
-        +'</div>'
-        +'</div>';
-    return campusCircleString;
+    var campusCircleCell=new campusCircleCellElement(campusCircleObject);
+    return  campusCircleCell.muiCard();
 }
 
 var structureLiElementString=function(campusCircleObject){
-    var li= document.createElement('li');
-    li.className = 'mui-card';
-    li.innerHTML =structureCardElementString(campusCircleObject);
-    return li;
+    return structureCardElementString(campusCircleObject);
 }
 
 var createFragment = function(count) {
