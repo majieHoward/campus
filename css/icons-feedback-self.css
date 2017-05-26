@@ -46,3 +46,10 @@
 .icon-feedback-aixin1:before { 
     content: "\e606"; 
 }
+
+.icon-feedback-comment:before { 
+    content: "\e639"; 
+}
+.icon-feedback-pinglun:before { 
+    content: "\e621"; 
+}

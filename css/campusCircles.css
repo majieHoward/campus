@@ -20,10 +20,68 @@
 }
 
 .mui-icons-feedback-self{
-	font-size: 24px;
+	font-size: 26px;
 	color: #000000;
 }
 
 .praise-active{
 	color:#ae995a;
+}
+
+.mui-card-footer:before, .mui-card-header:after {
+   
+    height: 0px;
+
+}
+
+.mui-self-partake-footer{
+	position: relative;
+    padding: 10px 15px;
+    color: #000000;
+    font-size: 14px;
+}
+
+.mui-icons-partake-self{
+	color: #000000;
+    font-size: 14px;
+}
+
+.mui-self-partake-footer:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    margin-left: 15px;
+    margin-right: 15px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #cccccc;
+}
+
+.mui-self-card-footer {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    /**min-height: 44px;*/
+    padding: 10px 15px;
+    padding-bottom: 0px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+.mui-self-card-content-inner {
+    /**position: relative;**/
+    padding-bottom:0px;
+}
+
+.campusCircle-total-number-praise{
+	padding-left: 5px;
 }
