@@ -14,30 +14,34 @@
     		<h1 class="mui-title">预览</h1>
     	</header>	
     	<div class="mui-content">
+
+
     		<div class="upload-container" id="upload-container" name="upload-container">	
-            
+                <canvas id="canvas">
+
+                </canvas>
             </div>           	
             <nav class="mui-bar mui-bar-tab">
         		<div class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-                    <div class="mui-scroll">
-                        <a class="mui-control-item">反色</a>
-                        <a class="mui-control-item">黑白</a>
-                        <a class="mui-control-item">浮雕</a>
-                        <a class="mui-control-item">墨镜</a>
-                        <a class="mui-control-item">灰度</a>
-                        <a class="mui-control-item">怀旧</a>
-                        <a class="mui-control-item">连环画</a>
-                        <a class="mui-control-item">熔铸</a>
-                        <a class="mui-control-item">冰冻</a>
-                        <a class="mui-control-item">模糊</a>
-                        <a class="mui-control-item">减淡</a>
-                        <a class="mui-control-item">马赛克</a>
-                        <a class="mui-control-item">曝光</a>
-                        <a class="mui-control-item">铅笔画</a>
-                        <a class="mui-control-item">木雕</a>
-                        <a class="mui-control-item">柔化</a>
-                        <a class="mui-control-item">素描</a>
-                        <a class="mui-control-item">锐化</a>
+                    <div class="mui-scroll" id="filterProcessingList" name="filterProcessingList">
+                        <a class="mui-control-item negativeFilter" filterMethod="negativeFilter">反色</a>
+                        <a class="mui-control-item BAW_Filter" filterMethod="BAW_Filter">黑白</a>
+                        <a class="mui-control-item embossFilter" filterMethod="embossFilter">浮雕</a>
+                        <a class="mui-control-item sunglassFilter" filterMethod="sunglassFilter">墨镜</a>
+                        <a class="mui-control-item grayFilter" filterMethod="grayFilter">灰度</a>
+                        <a class="mui-control-item reminiscenceFilter" filterMethod="reminiscenceFilter">怀旧</a>
+                        <a class="mui-control-item comicFilter" filterMethod="comicFilter">连环画</a>
+                        <a class="mui-control-item castingFilter" filterMethod="castingFilter">熔铸</a>
+                        <a class="mui-control-item freezeFilter" filterMethod="freezeFilter">冰冻</a>
+                        <a class="mui-control-item spreadFilter" filterMethod="spreadFilter">模糊</a>
+                        <a class="mui-control-item mosaicsFilter" filterMethod="mosaicsFilter">马赛克</a>
+                        <a class="mui-control-item neonFilter" filterMethod="neonFilter">霓虹</a>
+                        <a class="mui-control-item exposureFilter" filterMethod="exposureFilter">曝光</a>
+                        <a class="mui-control-item pencilDrawing" filterMethod="pencilDrawing">铅笔画</a>
+                        <a class="mui-control-item woodCarving" filterMethod="woodCarving">木雕</a>
+                        <a class="mui-control-item softenFilter" filterMethod="softenFilter">柔化</a>
+                        <a class="mui-control-item sketchFilter" filterMethod="sketchFilter">素描</a>
+                        <a class="mui-control-item sharpenFilter" filterMethod="sharpenFilter">锐化</a>
                     </div>
                 </div>
         	</nav>
@@ -47,4 +51,5 @@
 <script type="text/javascript" src="js/howard.error.control.js"></script>
 <script src="js/mui.min.js"></script>
 <script src='js/gifshot.js'></script>
+<script type="text/javascript" src="js/photoFilter.js"></script>
 <script type="text/javascript" src="js/photoControl.js"></script>
