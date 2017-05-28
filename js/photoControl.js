@@ -13,21 +13,9 @@ mui('.mui-scroll-wrapper').scroll({
 mui('.mui-scroll').on('tap','.mui-control-item:not(.mui-active)',function(){
     
 });
-var imgSource;
-var imgSourceSource;
 
-var evaluateImgSource=function(imgSource){
-    this.imgSource=imgSource;
-    this.imgSourceSource=imgSource;
-}
-
-var obtainImgSource=function(){
-    return this.imgSource;
-}
 var loadPhotoControlImg=function(imgSoucre){
-    evaluateImgSource(imgSoucre);
     var img = new Image();
-    
     img.src = imgSoucre;
     img.onload = function () {
         var canvas = document.getElementById('canvas');
@@ -39,9 +27,19 @@ var loadPhotoControlImg=function(imgSoucre){
         //图片以原先尺寸呈现 
         canvas.style.width = '100%';//////////重点  
         //ctx.drawImage(img, 0, 0,width,height,0,0,width,height);
+        var canvasBackups = document.getElementById('canvasBackups');
+        var ctxBackups = canvasBackups.getContext('2d');
+        canvasBackups.width = img.width;//////////重点  
+        canvasBackups.height = img.height;//////////重点  
+        ctxBackups.clearRect(0,0,canvasBackups.width,canvasBackups.height);  
+        ctxBackups.drawImage(img,0,0,canvasBackups.width,canvasBackups.height); 
+        //图片以原先尺寸呈现 
+        canvasBackups.style.width = '100%';//////////重点  
+        //ctx.drawImage(img, 0, 0,width,height,0,0,width,height);
     };     
     //document.getElementById("processedPicture").src=imgSoucre;
 }
+
 var subPageProcessing=function(){
 
 };
@@ -57,23 +55,87 @@ gotobackFeedback.addEventListener('tap',function(){
 /**完成了图片的改造**/
 var completeFeedback=document.getElementById("completeFeedback");
 completeFeedback.addEventListener('tap',function(){
+    /*
     var uploadContainer=document.getElementById("upload-container");
     uploadContainer.innerHTML="";
     var canvas = document.createElement('canvas'); 
     canvas.id = "canvas"; 
     uploadContainer.appendChild(canvas);
-    window.parent.switchToFeedback(obtainImgSource());
+    var canvasBackups = document.createElement('canvas');
+    canvasBackups.id="canvasBackups";
+    canvasBackups.style.display="none";
+    uploadContainer.appendChild(canvasBackups);
+    */
+    var canvas = document.getElementById('canvas');
+    /**将canvas转换成img**/
+    window.parent.switchToFeedback(canvas.toDataURL("image/png"));
 });
 
+var imageFilterProcessing=function(filterMethodValue,imageData){
+    if("negativeFilter"===filterMethodValue){  		//反色
+        return negativeFilter(imageData);   		//反色
+    } 
+    if("BAW_Filter"===filterMethodValue){        		//黑白
+        return BAW_Filter(imageData);
+    }     		//黑白
+    if("embossFilter"===filterMethodValue){ 	 		//浮雕
+        return embossFilter(imageData);
+    }	 		//浮雕
+    if("sunglassFilter"===filterMethodValue){ 	 		//墨镜
+        return sunglassFilter(imageData);	
+    } 		//墨镜
+    if("grayFilter"===filterMethodValue){ 		 		//灰度
+        return grayFilter(imageData);
+    }		 		//灰度
+    if("reminiscenceFilter"===filterMethodValue){ 		//怀旧
+        return reminiscenceFilter(imageData);
+    }		//怀旧
+    if("comicFilter"===filterMethodValue){ 				//连环画
+        return comicFilter(imageData);
+    }				//连环画
+    if("castingFilter"===filterMethodValue){ 			//熔铸
+        return castingFilter(imageData);
+    }			//熔铸
+    if("freezeFilter"===filterMethodValue){ 			//冰冻
+        return freezeFilter(imageData);
+    }			//冰冻
+    if("spreadFilter"===filterMethodValue){ 			//模糊
+        return spreadFilter(imageData);
+    }			//模糊
+    if("mosaicsFilter"===filterMethodValue){ 			//马赛克
+        return mosaicsFilter(imageData);
+    }			//马赛克
+    if("neonFilter"===filterMethodValue){ 				//霓虹
+        return neonFilter(imageData);
+    }				//霓虹
+    if("exposureFilter"===filterMethodValue){ 			//曝光
+        return exposureFilter(imageData);
+    }			//曝光
+    if("pencilDrawing"===filterMethodValue){ 			//铅笔画
+        return pencilDrawing(imageData);
+    }			//铅笔画
+    if("woodCarving	"===filterMethodValue){ 			//木雕
+        return woodCarving(imageData);	
+    }			//木雕
+    if("softenFilter"===filterMethodValue){ 			//柔化
+        return softenFilter(imageData);
+    }			//柔化
+    if("sketchFilter"===filterMethodValue){ 			//素描
+        return sketchFilter(3,1,imageData);
+    }			//素描
+    if("sharpenFilter"===filterMethodValue){ 			//锐化
+        return sharpenFilter(imageData);
+    }	
+    return imageData;		//锐化
+}
 
-
+/**切换不同的滤镜**/
 mui("#filterProcessingList").on('tap', 'a', function (event) {
     var filterMethod=this.getAttribute("filterMethod");
-    var img= document.getElementById("processedPicture");
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
-    
-    var imageData = ctx.getImageData(0,0,canvas.width, canvas.height);
-    ctx.putImageData(negativeFilter(imageData),0,0);  
+    var canvasBackups = document.getElementById('canvasBackups');
+    var ctxBackups = canvasBackups.getContext('2d');
+    var imageData = ctxBackups.getImageData(0,0,canvasBackups.width,canvasBackups.height);
+    ctx.putImageData(imageFilterProcessing(filterMethod,imageData),0,0);  
 });
-

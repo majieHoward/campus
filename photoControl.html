@@ -16,8 +16,12 @@
     	<div class="mui-content">
 
 
-    		<div class="upload-container" id="upload-container" name="upload-container">	
+    		<div class="upload-container" id="upload-container" name="upload-container">	<!--展示图片-->
                 <canvas id="canvas">
+
+                </canvas>
+                <!--备份图片-->
+                <canvas id="canvasBackups" style="display: none;">
 
                 </canvas>
             </div>           	
@@ -40,7 +44,9 @@
                         <a class="mui-control-item pencilDrawing" filterMethod="pencilDrawing">铅笔画</a>
                         <a class="mui-control-item woodCarving" filterMethod="woodCarving">木雕</a>
                         <a class="mui-control-item softenFilter" filterMethod="softenFilter">柔化</a>
+                        <!--
                         <a class="mui-control-item sketchFilter" filterMethod="sketchFilter">素描</a>
+                        -->
                         <a class="mui-control-item sharpenFilter" filterMethod="sharpenFilter">锐化</a>
                     </div>
                 </div>
