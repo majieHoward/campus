@@ -245,13 +245,16 @@ var switchToFeedback=function(imgSource){
 
 /**展示图片处理页面 feedback页面中调用photoControl页面**/
 var photocontrolPager=function(imgSource){
-
+	document.getElementById("photocontrolIFrame").contentWindow.loadPhotoControlImg(imgSource);
+	showPhotocontrolPager();
+}
+/**调用图片处理页面**/
+var showPhotocontrolPager=function(){
 	var all=document.getElementsByClassName("child-content-self");
 	for(var i=0;i<all.length;i++){
 		all[i].style.display="none";
 	}
 	//
-	document.getElementById("photocontrolIFrame").contentWindow.loadPhotoControlImg(imgSource);
 	controlDisplayHeaderAndNav("tabIframeMainHeader","none");
 	controlDisplayHeaderAndNav("tabIframeMainNav","none");
 	document.getElementById("photocontrol").style.display="block"; 

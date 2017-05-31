@@ -14,7 +14,42 @@ mui('.mui-scroll').on('tap','.mui-control-item:not(.mui-active)',function(){
     
 });
 
+
+var constructionFilter=function(classNameValue,filterMethodValue,filterName){
+    var a= document.createElement("a");
+    a.className=classNameValue;
+    a.setAttribute("filterMethod",filterMethodValue);
+    a.appendChild(document.createTextNode(filterName));
+    return a;
+}
+
+var clearFilterSelect=function(){
+    var aItems = document.getElementById('filterProcessingList').getElementsByClassName('mui-control-item');
+    var aItemClassList;
+    for(var i=0;i<aItems.length;i++){
+        //默认勾选第一个滤镜*
+        aItemClassList=aItems[i].classList;
+        if(aItemClassList.contains("noneFilter")){
+            aItemClassList.add("mui-active");
+        }else{
+            aItemClassList.remove("mui-active");
+        }
+    } 
+   
+}
+
+var clearCanvasItems=function(){
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var canvasBackups = document.getElementById('canvasBackups');
+    var ctxBackups = canvasBackups.getContext('2d');
+    ctx.clearRect(0,0,canvas.width,canvas.height);  
+    ctxBackups.clearRect(0,0,canvasBackups.width,canvasBackups.height);
+}
+/**拍摄或者选择一个新的图片调用该方法**/
 var loadPhotoControlImg=function(imgSoucre){
+    clearFilterSelect();
+    clearCanvasItems();
     var img = new Image();
     img.src = imgSoucre;
     img.onload = function () {
@@ -72,6 +107,9 @@ completeFeedback.addEventListener('tap',function(){
 });
 
 var imageFilterProcessing=function(filterMethodValue,imageData){
+    if("noneFilter"===filterMethodValue){
+        return imageData;
+    }
     if("negativeFilter"===filterMethodValue){  		//反色
         return negativeFilter(imageData);   		//反色
     } 

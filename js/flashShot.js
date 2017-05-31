@@ -11,6 +11,11 @@ var str = "";
 
 
 (function(flashNote,window) {
+
+	var pictureStatusValue = 0;
+
+	//var currentPhotoObject;
+
 	mui.init();
 
 	mui('.mui-scroll-wrapper').scroll({
@@ -131,6 +136,22 @@ var str = "";
 		}, Math.random() * 200 + 200);
 	}
 
+    /**还原页面**/
+    var restorePage=function(){
+        /**清空图片**/
+		element.takeAPictureElement.style.display="block";
+		element.showAPictureElement.style.display="none";
+        /**清空留言**/
+        element.textareaOfDescribe.value=""
+        element.showSayDescribeValue.value="";
+        document.getElementById("countFontNumber").innerHTML = 140;
+        /**清空地区选择**/
+
+        /**取消仅自己可见**/
+        var selfSeeContentClassList = element.selfSeeContent.classList;
+		element.selfSeeContent.className="mui-table-view-cell self-locked-say";
+    }
+
 	var publishItemMessage=function(){
 		/**可以只发图片或者只发文字**/
 		//var container = mui("#publishMessageBar");
@@ -143,6 +164,9 @@ var str = "";
 		/*setTimeout(function() {
 			mui('#publishMessageBar').progressbar().hide();
 		}, 5000);*/
+		/**发布后清空所有的内容**/
+		restorePage();
+
 		window.parent.releaseANewCampusCircles(element.textareaOfDescribe.value);
 	}
 
@@ -163,11 +187,14 @@ var str = "";
 	    div.appendChild(img);
 	    img.onload = function () {
 	        document.querySelector('#upload-container').appendChild(div);
-	    };     
+	    }; 
+	    //currentPhotoObject=imgSoucre;    
 	    img.src = imgSoucre;
 	}
 	/**删除当前图片重新拍摄或者选择图片**/
 	element.imageShowDeleteItem.addEventListener('tap',function(){
+		//pictureStatusValue = 0;
+		//currentPhotoObject=undefined;　　
 		element.takeAPictureElement.style.display="block";
 		element.showAPictureElement.style.display="none";
 	});
@@ -177,7 +204,14 @@ var str = "";
 	element.selfSeeContent.addEventListener('tap', controlSelfSeeContent);
 	/**重新编辑当前图片**/
 	element.imageShowEditItem.addEventListener('tap',function(){
+		//pictureStatusValue = 1;
 	    /**重新调用photoControl.html页面**/
+
+	    /**重新编辑图片如果点击继续按钮需要显示之前已经修改好的图片滤镜效果**/
+
+        /**记录的状态值**/
+         window.parent.showPhotocontrolPager();
+
 
 	});
 	/**拍照或者选择图片**/
