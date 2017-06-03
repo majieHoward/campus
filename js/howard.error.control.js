@@ -41,7 +41,7 @@
 		}
  		
  		
- 	}
+ 	};
 
  	control.selfErgodicElement=function(node,arrayItem) {  
 	    //得到当前节点的所有的孩子节点 
@@ -69,4 +69,11 @@
 	    	}
 	    }  
 	};
+    
+    var domainUrl="http://127.0.0.1:9999";
+
+    control.networkRequest={
+        comment:domainUrl+"/campus/comment.howard"
+    };
+
 })(window);

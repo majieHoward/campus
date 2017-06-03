@@ -97,8 +97,8 @@ var str = "";
 		synchronousSaydata();
 	}    
 
-	var controlSelfSeeContent=function(){
-		/**
+    var isSelfSee=function(){
+    	/**
 		mui-table-view-cell self-locked-say
 		mui-table-view-cell self-locked-say-active
 		**/
@@ -106,11 +106,36 @@ var str = "";
 
 		if (selfSeeContentClassList.contains('self-locked-say-active')) {
 			/**当前为激活状态改为非激活状态**/
-			
-			element.selfSeeContent.className="mui-table-view-cell self-locked-say";
-			
+			//element.selfSeeContent.className="mui-table-view-cell self-locked-say";
+			return "active";
 		} else if(selfSeeContentClassList.contains('self-locked-say')) {
 			
+			/**当前为非激活状态改为激活状态**/
+			//element.selfSeeContent.className="mui-table-view-cell self-locked-say-active";
+			return "locked"
+		}
+    }
+	var controlSelfSeeContent=function(){
+		/**
+		mui-table-view-cell self-locked-say
+		mui-table-view-cell self-locked-say-active
+		**/
+		//var selfSeeContentClassList = element.selfSeeContent.classList;
+
+		//if (selfSeeContentClassList.contains('self-locked-say-active')) {
+			/**当前为激活状态改为非激活状态**/
+			
+			//element.selfSeeContent.className="mui-table-view-cell self-locked-say";
+			
+		//} else if(selfSeeContentClassList.contains('self-locked-say')) {
+			
+			/**当前为非激活状态改为激活状态**/
+		//	element.selfSeeContent.className="mui-table-view-cell self-locked-say-active";
+		//}
+		if("active"===isSelfSee()){
+			/**当前为激活状态改为非激活状态**/
+			element.selfSeeContent.className="mui-table-view-cell self-locked-say";
+		}else if("locked"===isSelfSee()){
 			/**当前为非激活状态改为激活状态**/
 			element.selfSeeContent.className="mui-table-view-cell self-locked-say-active";
 		}
@@ -152,7 +177,27 @@ var str = "";
 		element.selfSeeContent.className="mui-table-view-cell self-locked-say";
     }
 
-	var publishItemMessage=function(){
+    /**构造校园圈内容**/
+    var structureParameterObj=function(){
+ 		var publishMessageObject={};
+        /**article文字**/
+        publishMessageObject.a=element.textareaOfDescribe.value;
+        /**picture图片**/
+        publishMessageObject.b=document.getElementById("showImageEntity").src;
+        /**secrecy仅自己可看**/
+        if("active"===isSelfSee()){
+			/**当前为激活状态**/
+			publishMessageObject.c="0";
+		}else if("locked"===isSelfSee()){
+			/**当前为非激活状态**/
+			publishMessageObject.c="1";
+		}
+ 		return publishMessageObject;
+    }
+
+    /**发布校园圈**/
+ 	var publishItemMessage=function(){
+ 		/**判断**/
 		/**可以只发图片或者只发文字**/
 		//var container = mui("#publishMessageBar");
 		//因为本页面既有顶部准确进度的进度条，也有顶部无限循环的进度条，因此这里需要强制定义progress: undefined覆盖；
@@ -165,9 +210,27 @@ var str = "";
 			mui('#publishMessageBar').progressbar().hide();
 		}, 5000);*/
 		/**发布后清空所有的内容**/
+		/**判断是否有内容**/
+		mui.ajax(window.networkRequest.comment,{
+			data:structureParameterObj(),
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			//processData:false,
+			timeout:10000,//超时时间设置为10秒;
+			//application/x-www-form-urlencoded
+			//headers:{'Content-Type':'application/json'},
+			headers:{'Content-Type':'application/x-www-form-urlencoded'},	              
+			success:function(data){
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				console.log(data);
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(type);
+			}
+		});
 		restorePage();
-
-		window.parent.releaseANewCampusCircles(element.textareaOfDescribe.value);
+		//window.parent.releaseANewCampusCircles(element.textareaOfDescribe.value);
 	}
 
 	flashNote.swithToShowImage=function(imgSource){

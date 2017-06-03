@@ -14,26 +14,12 @@ var str = "";
     window.selfErgodicElement(document.body,element);
     /**构造<li class="mui-table-view-cell mui-media">中的内容**/
     var structureCellString=function(giveTheThumbsUpObject){
- 		var giveTheThumbsUpString='<div class="self-pull-left">'
-			+'<img class="mui-media-object"'
-			+'data-lazyload="http://wx.qlogo.cn/mmopen/RKeLNKp2313cLN64s6wykw53icHyZE0rnp3oJewticgVMCKGwlhvelYXHY2kibfAOmyj7aBMEKxnuiaX0NOK7TKibicWFFcKohPrfQ/0">'
-			+'</div>'
-			+'<div class="mui-media-body">'
-			+'<span class="self-giveTheThumbsUp-reviewer">'
-			+'overcast'
-			+'</span>'
-			+'<span class="self-giveTheThumbsUp-comment-time">'
-			+'16小时前'
-			+"</span>"
-			+'</div>';
-		return giveTheThumbsUpString;
+ 		var giveTheThumbsUpObjectCell = new giveTheThumbsUpObjectCellElement(giveTheThumbsUpObject);
+ 		return giveTheThumbsUpObjectCell.muiMedia();
     };
     /****/
     var structureLiElementString=function(giveTheThumbsUpObject){
-    	var li = document.createElement('li');
-		li.className = 'mui-table-view-cell mui-media';
-		li.innerHTML = structureCellString(giveTheThumbsUpObject);
-    	return li;
+    	return structureCellString(campusCircleObject);
     }
     /****/
 	var createFragment = function(count) {
