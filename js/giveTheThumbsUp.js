@@ -19,7 +19,7 @@ var str = "";
     };
     /****/
     var structureLiElementString=function(giveTheThumbsUpObject){
-    	return structureCellString(campusCircleObject);
+    	return structureCellString(giveTheThumbsUpObject);
     }
     /****/
 	var createFragment = function(count) {

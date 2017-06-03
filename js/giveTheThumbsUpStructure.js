@@ -16,14 +16,14 @@ giveTheThumbsUpObjectCellElement.prototype.selfPullLeft=function(){
     return div;
 }
 
-campusCircleCellElement.prototype.reviewer=function(){
+giveTheThumbsUpObjectCellElement.prototype.reviewer=function(){
     var span = document.createElement('span');
     span.className = "self-giveTheThumbsUp-reviewer";
     span.appendChild(document.createTextNode('overcast'));
     return span;
 }
 
-campusCircleCellElement.prototype.commentTime=function(){
+giveTheThumbsUpObjectCellElement.prototype.commentTime=function(){
     var span = document.createElement('span');
     span.className = "self-giveTheThumbsUp-comment-time";
     span.appendChild(document.createTextNode('16小时前'));
@@ -33,8 +33,8 @@ campusCircleCellElement.prototype.commentTime=function(){
 giveTheThumbsUpObjectCellElement.prototype.muiMediaBody=function(){
 	var div = document.createElement('div');
     div.className = "mui-media-body";
-    div.appendChild(reviewer());
-    div.appendChild(commentTime());
+    div.appendChild(this.reviewer());
+    div.appendChild(this.commentTime());
     return div;
 }
 
