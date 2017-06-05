@@ -1,6 +1,6 @@
 ﻿/*!
  * ======================================================
- * photoControl (https://github.com/majieHoward)
+ * campusCircles (https://github.com/majieHoward)
  * =======================================================
  * @version:1.0.0
  * @author:120234740@qq.com
