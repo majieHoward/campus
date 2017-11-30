@@ -177,7 +177,10 @@ mui("#list").on('tap', 'a', function (event) {
 //mui('.mui-scroll-wrapper').pullRefresh().scrollTo(0, 0, 1000);//滚动到顶部
 //window.scrollTo(0, 0);
 /**获取页面滚动距离**/
-var scroll = mui('.mui-scroll-wrapper').scroll();
+var scroll = mui('.mui-scroll-wrapper').scroll({
+    deceleration: 0.1, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值 0.0006 
+    indicators: false   //隐藏一条滚动条 增大减速系数。。。
+});
 
 document.querySelector('.mui-scroll-wrapper').addEventListener('scroll',function (e) {
     /**TODO**/
